@@ -1,0 +1,17 @@
+Projeto: EventHub (nome provisório)
+Descrição
+
+O EventHub é uma plataforma web que centraliza todas as informações de um evento por meio de um único QR Code.
+
+Ao criar um evento, o organizador recebe um QR Code que pode ser impresso em convites, mesas ou banners. Os convidados escaneiam esse QR Code e acessam uma página personalizada do evento, onde podem visualizar informações, interagir e contribuir com conteúdo.
+
+O objetivo é substituir vários links (Google Drive, formulários, mapas, listas de presentes etc.) por uma única página organizada e agradável.
+
+O projeto deve ser desenvolvido com foco em escalabilidade e arquitetura limpa, permitindo a adição de novos módulos sem necessidade de grandes mudanças na estrutura da aplicação.
+
+
+
+- PostgreSQL
+- Redis
+- jdk 21
+- maven
