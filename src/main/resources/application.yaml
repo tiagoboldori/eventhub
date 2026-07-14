@@ -1,3 +1,8 @@
 spring:
   application:
     name: eventhub
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/eventhub
+    username: postgres
+    password: postgres
