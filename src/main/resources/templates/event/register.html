@@ -7,9 +7,9 @@
 
 <body>
 
-<h1>Cadastrar usuário</h1>
+<h1>Cadastrar Evento</h1>
 
-<form th:action="@{/auth/register}" th:object="${request}" method="post">
+<form th:action="@{/event/register}" th:object="${request}" method="post">
 
     <div>
         <label>Nome</label>
@@ -17,14 +17,10 @@
     </div>
 
     <div>
-        <label>Email</label>
-        <input type="email" th:field="*{email}">
+        <label>Descrição</label>
+        <input type="email" th:field="*{description}">
     </div>
 
-    <div>
-        <label>Senha</label>
-        <input type="password" th:field="*{password}">
-    </div>
 
     <button type="submit">
         Cadastrar
