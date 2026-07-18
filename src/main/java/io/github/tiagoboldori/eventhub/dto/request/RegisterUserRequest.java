@@ -5,15 +5,15 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class RegisterUserRequest {
-    @NotBlank
+    @NotBlank(message = "Nome é obrigatório.")
     private String name;
 
-    @NotBlank
+    @NotBlank(message = "Email é obrigatório")
     @Email
     private String email;
 
-    @NotBlank
-    @Size(min=6)
+    @NotBlank(message = "Senha é obrigatória")
+    @Size(min=6,max = 11, message = "Senha deve ter ao menos 6 digitos e no máximo 11.")
     private String password;
 
     public RegisterUserRequest(){

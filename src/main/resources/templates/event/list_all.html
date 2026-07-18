@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Usuários</title>
+    <title>Eventos</title>
 </head>
 <body>
 
-<h1>Lista de usuários</h1>
+<h1>Lista de Eventos</h1>
 
 <ul>
     <li th:each="event : ${events}">
-        <span th:text="${event.name}"></span>
-        -
-        <span th:text="${event.email}"></span>
+        Nome:<span th:text="${event.name}"></span>
+        <br>
+        Organizador:<span th:text="${event.organizer.getName()}"></span>
+
+        <br>
+        Descrição:<span th:text="${event.description}"></span>
+
     </li>
 </ul>
 

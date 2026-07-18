@@ -35,8 +35,14 @@ public class AuthController {
         return "auth/register";
     }
     @PostMapping("/register")
-    public String register(@Valid @ModelAttribute RegisterUserRequest request, BindingResult bindingResult, Model model){
-
+    public String register(@Valid @ModelAttribute("request") RegisterUserRequest request, BindingResult bindingResult, Model model){
+        if(userService.emailAlreadyExists(request.getEmail())){
+            bindingResult.rejectValue(
+                    "email",
+                    "email.exists",
+                    "Já existe um usuário com este e-mail."
+            );
+        }
         if (bindingResult.hasErrors()){
             return "auth/register";
         }

@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 @Table(name="events")
 public class Event {
 
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,14 +19,23 @@ public class Event {
 
     private String description;
 
+    @Column(name="start_date")
+    private LocalDateTime startDate;
+
+    @Column(name="end_date")
+    private LocalDateTime endDate;
+
     @Column(name = "created_at", insertable = false, updatable = false)
     private LocalDateTime createdAt;
+
+    @ManyToOne
+    @JoinColumn(name="organizer_id")
+    private User organizer;
 
 
     public Event(){
 
     }
-
 
     public Long getId() {
         return id;
@@ -50,6 +61,22 @@ public class Event {
         this.description = description;
     }
 
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
+    }
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -57,6 +84,15 @@ public class Event {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
+
+    public User getOrganizer() {
+        return organizer;
+    }
+
+    public void setOrganizer(User organizer) {
+        this.organizer = organizer;
+    }
+
 
 
 }

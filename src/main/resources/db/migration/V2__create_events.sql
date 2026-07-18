@@ -1,6 +1,13 @@
 CREATE TABLE events(
-      id BIGSERIAL PRIMARY KEY,
-      name VARCHAR(100) NOT NULL,
-      description VARCHAR(255) NOT NULL UNIQUE,
-      created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description VARCHAR(255) NOT NULL UNIQUE,
+    start_date TIMESTAMP NOT NULL,
+    end_date TIMESTAMP NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    organizer_id BIGINT NOT NULL,
+    CONSTRAINT fk_organizer
+                   FOREIGN KEY(organizer_id)
+                   REFERENCES users(id)
+                   ON DELETE CASCADE
 );
