@@ -1,0 +1,17 @@
+<form th:action="@{/auth/login}" method="post" th:object="${request}">
+
+    <input
+            type="email"
+            th:field="*{email}"
+            placeholder="Email">
+
+    <input
+            type="password"
+            th:field="*{password}"
+            placeholder="Senha">
+
+    <button type="submit">
+        Entrar
+    </button>
+
+</form>
