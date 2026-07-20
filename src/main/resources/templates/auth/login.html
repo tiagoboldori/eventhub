@@ -6,25 +6,31 @@
         rel="stylesheet">
 <link
         rel="stylesheet"
-        th:href="@{/css/style.css}">
+        th:href="@{/css/pages/loginStyle.css}">
+
+
 <div class="login-wrapper">
-    <form class="login-form" th:action="@{/auth/login}" method="post">
+    <div class="login-card">
+        <h2> Eventhub </h2>
 
-        <input class="login-input"
-                type="email"
-                name="username">
-        <br>
+        <form class="login-form" th:action="@{/auth/login}" method="post">
 
-        <input class="login-input"
-                type="password"
-                name="password">
-        <br>
+            <input class="login-input"
+                    type="email"
+                    name="username">
+            <br>
 
-        <div class = "login-button">
-            <button type="submit">
-                Entrar
-            </button>
-        </div>
+            <input class="login-input"
+                    type="password"
+                    name="password">
+            <br>
 
-    </form>
+            <div class = "login-button">
+                <button type="submit">
+                    Entrar
+                </button>
+            </div>
+
+        </form>
+    </div>
 </div>

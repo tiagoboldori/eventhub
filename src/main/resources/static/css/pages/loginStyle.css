@@ -1,0 +1,170 @@
+/*RESET E ESTILOS GLOBAIS*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+
+    text-decoration: none;
+
+    color: inherit;
+
+}
+
+
+:root {
+
+    /* ===========================
+       Cores principais
+    =========================== */
+
+    --primary: #F28C28;
+    --primary-hover: #E67E22;
+    --primary-light: #F9C784;
+
+    /* ===========================
+       Cores auxiliares
+    =========================== */
+
+    --secondary: #4F7CAC;
+
+    --success: #43AA8B;
+    --warning: #F9C74F;
+    --danger: #E63946;
+
+    /* ===========================
+       Fundo
+    =========================== */
+
+    --background: #FFF8F2;
+    --surface: #FFFFFF;
+
+    /* ===========================
+       Texto
+    =========================== */
+
+    --text-primary: #2B2D42;
+    --text-secondary: #6C757D;
+    --text-light: #FFFFFF;
+
+    /* ===========================
+       Bordas
+    =========================== */
+
+    --border: #E9ECEF;
+
+    /* ===========================
+       Sombras
+    =========================== */
+
+    --shadow-sm: 0 2px 6px rgba(0,0,0,.08);
+    --shadow-md: 0 6px 16px rgba(0,0,0,.12);
+
+    /* ===========================
+       Radius
+    =========================== */
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+
+}
+
+button{
+
+    cursor: pointer;
+
+    border: none;
+
+    border-radius: var(--radius-sm);
+
+    background: var(--primary);
+
+    color: var(--text-light);
+
+    padding: .8rem 1.4rem;
+
+    transition: .2s;
+
+}
+button:hover{
+
+    background: var(--primary-hover);
+
+}
+input{
+
+    width: 100%;
+
+    padding: .8rem;
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-sm);
+
+}
+.container{
+
+    width: min(1200px, 90%);
+
+    margin: 0 auto;
+
+}
+
+html{
+    font-family: "Inter", sans-serif;
+}
+
+
+/*========================== ESTILIZAÇÃO PAGINA DE LOGIN =========================*/
+html{
+    background-image: linear-gradient(55deg, var(--primary) , var(--primary-light));
+}
+
+body{
+    min-height: 100vh;
+}
+
+.login-card{
+    text-align:center;
+}
+
+.login-card h2{
+    color:white;
+    margin-bottom:30px;
+}
+
+.login-wrapper{
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
+}
+
+.login-form{
+    background-color: var(--surface);
+    padding: 30px;
+    border-radius: var(--radius-lg);
+    box-shadow:var(--shadow-sm);
+    min-width: 250px;
+    min-height: 210px;
+}
+
+.login-input{
+    background-color: white;
+    margin-bottom: 10px;
+    border-radius: var(--radius-lg);
+    border-width: 2px;
+}
+
+.login-button{
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
+}
+
+

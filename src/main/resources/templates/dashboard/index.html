@@ -4,13 +4,37 @@
     <body>
 
         <div layout:fragment="content">
-            <div class="banner">
-                Banner grande no topo com Imagem
-            </div>
+            <section class="hero">
+
+                <div class="hero-content">
+                    <div class="circle c1"></div>
+                    <div class="circle c2"></div>
+                    <div class="circle c3"></div>
+
+                    <h1>EventHub</h1>
+
+                    <p>
+                        Organize eventos, compartilhe informações e conecte
+                        seus convidados através de um único QR Code.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <button>Criar Evento</button>
+
+                        <button class="secondary">
+                            Saiba mais
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
             <br>
             <div class="welcome">
                 <h2>
-                    Bem-vindo,
+                    Eventos de
                     <span th:text="${loggedUser.name}"></span>
                 </h2>
             </div>
@@ -30,16 +54,17 @@
                 <div class="event-grid">
 
                     <div class="card-wrapper" th:each="event : ${events}">
+                        <div class="event-cover"></div>
                         <div class="card-title">
                             <h3 th:text="${event.name}"></h3>
                         </div>
                         <div class="event-card">
-                            <span th:text="${#temporals.format(event.startDate,'dd/MM/yyyy')}">
+                            <span class="date-badge" th:text="${#temporals.format(event.startDate,'dd/MM/yyyy')}">
                             </span>
 
                             <p th:text="${event.description}"></p>
 
-                            <a th:href="@{/events/{id}(id=${event.id})}">
+                            <a class="manage-btn" th:href="@{/events/{id}(id=${event.id})}">
                                 Gerir →
                             </a>
 
