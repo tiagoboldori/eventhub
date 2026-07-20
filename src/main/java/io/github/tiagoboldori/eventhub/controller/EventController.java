@@ -28,23 +28,23 @@ public class EventController {
     @GetMapping("/list_all")
     public String list(Model model){
         model.addAttribute("events", eventService.listAll());
-        return "event/list_all";
+        return "events/list_all";
     }
 
     @GetMapping("/register")
     public String register(Model model){
         model.addAttribute("request", new RegisterEventRequest());
         model.addAttribute("users", userService.listAll());
-        return "event/register";
+        return "events/register";
     }
 
     @PostMapping("/register")
     public String register(@Valid @ModelAttribute("request") RegisterEventRequest request, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
-            return "event/register";
+            return "events/register";
         }
 
         eventService.register(request);
-        return "redirect:/event/list_all";
+        return "redirect:/events/list_all";
     }
 }

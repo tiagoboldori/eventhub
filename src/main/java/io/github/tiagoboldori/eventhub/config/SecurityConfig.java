@@ -38,12 +38,10 @@ public class SecurityConfig {
 
 
                         // ORGANIZER ou ADMIN
-                        .requestMatchers("/dashboard/**")
-                        .hasAnyRole("ORGANIZER", "ADMIN")
-
-
-                        // ORGANIZER ou ADMIN
-                        .requestMatchers("/events/**")
+                        .requestMatchers(
+                                "/events/**",
+                                "/dashboard/**"
+                                )
                         .hasAnyRole("ORGANIZER", "ADMIN")
 
 

@@ -1,0 +1,338 @@
+/*RESET E ESTILOS GLOBAIS*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+
+    text-decoration: none;
+
+    color: inherit;
+
+}
+
+
+:root {
+
+    /* ===========================
+       Cores principais
+    =========================== */
+
+    --primary: #F28C28;
+    --primary-hover: #E67E22;
+    --primary-light: #F9C784;
+
+    /* ===========================
+       Cores auxiliares
+    =========================== */
+
+    --secondary: #4F7CAC;
+
+    --success: #43AA8B;
+    --warning: #F9C74F;
+    --danger: #E63946;
+
+    /* ===========================
+       Fundo
+    =========================== */
+
+    --background: #FFF8F2;
+    --surface: #FFFFFF;
+
+    /* ===========================
+       Texto
+    =========================== */
+
+    --text-primary: #2B2D42;
+    --text-secondary: #6C757D;
+    --text-light: #FFFFFF;
+
+    /* ===========================
+       Bordas
+    =========================== */
+
+    --border: #E9ECEF;
+
+    /* ===========================
+       Sombras
+    =========================== */
+
+    --shadow-sm: 0 2px 6px rgba(0,0,0,.08);
+    --shadow-md: 0 6px 16px rgba(0,0,0,.12);
+
+    /* ===========================
+       Radius
+    =========================== */
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+
+}
+
+button{
+
+    cursor: pointer;
+
+    border: none;
+
+    border-radius: var(--radius-sm);
+
+    background: var(--primary);
+
+    color: var(--text-light);
+
+    padding: .8rem 1.4rem;
+
+    transition: .2s;
+
+}
+button:hover{
+
+    background: var(--primary-hover);
+
+}
+input{
+
+    width: 100%;
+
+    padding: .8rem;
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-sm);
+
+}
+.container{
+
+    width: min(1200px, 90%);
+
+    margin: 0 auto;
+
+}
+
+html{
+    font-family: "Inter", sans-serif;
+    background-color: var(--background);
+}
+
+
+
+
+
+/*============= Estilização do app =================*/
+
+.navbar{
+
+    height:72px;
+
+    background:var(--surface);
+
+    border-bottom:1px solid var(--border);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 2rem;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.6rem;
+
+    font-size:1.4rem;
+
+    font-weight:700;
+
+}
+
+.logo-icon{
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+}
+
+.logo-text{
+
+    color:var(--primary);
+
+}
+
+.navbar-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:1.5rem;
+
+}
+
+.notification-btn{
+
+    background:none;
+
+    border:none;
+
+    font-size:1.2rem;
+
+    cursor:pointer;
+
+    padding:.5rem;
+
+}
+
+.notification-btn:hover{
+
+    transform:scale(1.1);
+
+}
+
+.user-menu{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:.8rem;
+
+    cursor:pointer;
+
+    padding:.5rem .8rem;
+
+    border-radius:var(--radius-md);
+
+    transition:.2s;
+
+}
+
+.user-menu:hover{
+
+    background:#f6f6f6;
+
+}
+
+.avatar{
+
+    width:38px;
+
+    height:38px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-weight:700;
+
+}
+
+.user-name{
+
+    font-weight:600;
+
+    color:var(--text-primary);
+
+}
+
+.arrow{
+
+    font-size:.8rem;
+
+    color:var(--text-secondary);
+
+}
+
+/*========================== ESTILIZAÇÃO PAGINA DE LOGIN =========================*/
+.login-wrapper{
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(55deg, var(--primary) , var(--primary-light));
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
+}
+
+.login-form{
+    background-color: var(--surface);
+    padding: 30px;
+    border-radius: var(--radius-lg);
+    box-shadow:var(--shadow-sm);
+}
+
+.login-input{
+    background-color: white;
+    margin-bottom: 10px;
+    border-radius: var(--radius-lg);
+    border-width: 2px;
+}
+
+.login-button{
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
+}
+
+
+
+
+
+
+
+/*===========================Estilização CARDS DE EVENTO ============================*/
+.event-grid{
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 10px;
+}
+
+.card-wrapper{
+    box-shadow:var(--shadow-sm);
+    margin:10px;
+    border-radius: var(--radius-lg);
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.card-title{
+    text-align: center;
+    background-color: var(--primary);
+    width: 100%;
+    padding: 7px;
+}
+
+.event-card{
+    padding: 10px;
+    background-color: var(--surface);
+}
+
+
+/*========== Dashboard (geral) ==============*/
+.welcome h2{
+    text-align: center;
+}

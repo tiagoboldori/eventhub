@@ -1,23 +1,64 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>EventHub</title>
+<html layout:decorate="~{layout/base}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
+    <body>
 
-<h1>Olá EventHub!</h1>
-<h2>
-    Bem-vindo,
-    <span th:text="${loggedUser.name}"></span>
-</h2>
-<script src="/js/script.js"></script>
-<form th:action="@{/auth/logout}" method="post">
-    <button type="submit">
-        Sair
-    </button>
-</form>
-</body>
+        <div layout:fragment="content">
+            <div class="banner">
+                Banner grande no topo com Imagem
+            </div>
+            <br>
+            <div class="welcome">
+                <h2>
+                    Bem-vindo,
+                    <span th:text="${loggedUser.name}"></span>
+                </h2>
+            </div>
+
+
+
+            <div th:if="${#lists.isEmpty(events)}">
+                <h2>Você ainda não possui eventos.</h2>
+
+                <a th:href="@{/events/register}">
+                    Criar primeiro evento
+                </a>
+            </div>
+
+            <div th:unless="${#lists.isEmpty(events)}">
+
+                <div class="event-grid">
+
+                    <div class="card-wrapper" th:each="event : ${events}">
+                        <div class="card-title">
+                            <h3 th:text="${event.name}"></h3>
+                        </div>
+                        <div class="event-card">
+                            <span th:text="${#temporals.format(event.startDate,'dd/MM/yyyy')}">
+                            </span>
+
+                            <p th:text="${event.description}"></p>
+
+                            <a th:href="@{/events/{id}(id=${event.id})}">
+                                Gerir →
+                            </a>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <script src="/js/script.js"></script>
+    </body>
+
 </html>
+
+
+
+
+
+
+
