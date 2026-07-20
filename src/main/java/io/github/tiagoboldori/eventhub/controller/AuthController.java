@@ -1,11 +1,7 @@
 package io.github.tiagoboldori.eventhub.controller;
 
-import io.github.tiagoboldori.eventhub.dto.request.LoginRequest;
 import io.github.tiagoboldori.eventhub.dto.request.RegisterUserRequest;
-import io.github.tiagoboldori.eventhub.dto.session.LoggedUser;
-import io.github.tiagoboldori.eventhub.entity.User;
 import io.github.tiagoboldori.eventhub.service.UserService;
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

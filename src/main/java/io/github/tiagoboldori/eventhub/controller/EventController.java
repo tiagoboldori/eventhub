@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/event")
+@RequestMapping("/events")
 public class EventController {
     private final EventService eventService;
     private final UserService userService;

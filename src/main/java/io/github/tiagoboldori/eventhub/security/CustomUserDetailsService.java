@@ -35,7 +35,5 @@ public class CustomUserDetailsService
                 );
 
         return new CustomUserDetails(user);
-
     }
-
 }

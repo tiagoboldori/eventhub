@@ -2,6 +2,7 @@ package io.github.tiagoboldori.eventhub.service;
 
 import io.github.tiagoboldori.eventhub.dto.request.RegisterUserRequest;
 import io.github.tiagoboldori.eventhub.entity.User;
+import io.github.tiagoboldori.eventhub.enums.UserRole;
 import io.github.tiagoboldori.eventhub.repository.UserRepository;
 import jakarta.validation.constraints.Null;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -46,7 +47,7 @@ public class UserService {
         User user = new User();
         user.setName(request.getName());
         user.setEmail(request.getEmail());
-
+        user.setRole(UserRole.ORGANIZER);
 
         user.setPassword(
                 passwordEncoder.encode((request.getPassword()))

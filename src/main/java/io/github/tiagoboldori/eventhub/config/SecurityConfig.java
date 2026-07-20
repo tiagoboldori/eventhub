@@ -15,6 +15,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http)
             throws Exception {
@@ -22,6 +23,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
 
+                        // Públicas
                         .requestMatchers(
                                 "/auth/login",
                                 "/auth/register",
@@ -29,28 +31,40 @@ public class SecurityConfig {
                                 "/js/**"
                         ).permitAll()
 
-                        .anyRequest().authenticated()
-                )
 
-                .formLogin(login -> login
+                        // Somente ADMIN
+                        .requestMatchers("/admin/**")
+                        .hasRole("ADMIN")
 
-                        .loginPage("/auth/login")
 
-                        .loginProcessingUrl("/auth/login")
+                        // ORGANIZER ou ADMIN
+                        .requestMatchers("/dashboard/**")
+                        .hasAnyRole("ORGANIZER", "ADMIN")
 
-                        .defaultSuccessUrl("/dashboard")
 
-                        .failureUrl("/auth/login?error")
+                        // ORGANIZER ou ADMIN
+                        .requestMatchers("/events/**")
+                        .hasAnyRole("ORGANIZER", "ADMIN")
 
+
+                        // Todo o resto público
+                        .anyRequest()
                         .permitAll()
                 )
 
+
+                .formLogin(login -> login
+                        .loginPage("/auth/login")
+                        .loginProcessingUrl("/auth/login")
+                        .defaultSuccessUrl("/dashboard/")
+                        .failureUrl("/auth/login?error")
+                        .permitAll()
+                )
+
+
                 .logout(logout -> logout
-
                         .logoutUrl("/auth/logout")
-
                         .logoutSuccessUrl("/auth/login")
-
                 );
 
 
