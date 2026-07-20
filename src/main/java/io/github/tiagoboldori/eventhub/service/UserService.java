@@ -23,21 +23,22 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User authenticate(String email, String password){
-        Optional<User> optionalUser = userRepository.findByEmail(email);
 
-        if(optionalUser.isEmpty()){
-            throw new RuntimeException("Email ou senha inválidos!");
-        }
-
-        User user = optionalUser.get();
-
-        if (!passwordEncoder.matches(password, user.getPassword())){
-            throw new RuntimeException("Email ou senha inválidos!");
-        }
-
-        return user;
-    }
+//    public User authenticate(String email, String password){
+//        Optional<User> optionalUser = userRepository.findByEmail(email);
+//
+//        if(optionalUser.isEmpty()){
+//            throw new RuntimeException("Email ou senha inválidos!");
+//        }
+//
+//        User user = optionalUser.get();
+//
+//        if (!passwordEncoder.matches(password, user.getPassword())){
+//            throw new RuntimeException("Email ou senha inválidos!");
+//        }
+//
+//        return user;
+//    }
 
 
     public User register(RegisterUserRequest request) {

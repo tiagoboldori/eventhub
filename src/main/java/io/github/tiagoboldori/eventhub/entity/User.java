@@ -1,5 +1,6 @@
 package io.github.tiagoboldori.eventhub.entity;
 
+import io.github.tiagoboldori.eventhub.enums.UserRole;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -26,11 +27,18 @@ public class User {
 
     private String password;
 
+
     @Column(name = "created_at", insertable = false, updatable = false)
     private LocalDateTime createdAt;
 
+
     @OneToMany(mappedBy = "organizer")
     private List<Event> events = new ArrayList<>();
+
+
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
+
 
     public User(){
 
@@ -71,5 +79,13 @@ public class User {
     }
     public void setCreatedAt(LocalDateTime time){
         this.createdAt = time;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 }
