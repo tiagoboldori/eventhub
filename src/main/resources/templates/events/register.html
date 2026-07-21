@@ -1,64 +1,150 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/base}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-    <title>Cadastro</title>
+<link
+        rel="stylesheet"
+        th:href="@{/css/pages/registerEvent.css}">
 </head>
-
 <body>
 
-<h1>Cadastrar Evento</h1>
+<div layout:fragment="content">
 
-<form th:action="@{/events/register}" th:object="${request}" method="post">
+    <section class="register-event">
 
-    <div>
-        <label>Nome</label>
-        <input type="text" th:field="*{name}">
-        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+        <div class="form-container">
+
+            <div class="form-header">
+
+                <h1>Cadastrar Evento</h1>
+
+                <p>
+                    Preencha as informações abaixo para criar um novo evento.
+                </p>
+
+            </div>
+
+            <form class="event-form"
+                  th:action="@{/events/register}"
+                  th:object="${request}"
+                  method="post">
+
+                <div class="form-group">
+
+                    <label>Nome do Evento</label>
+
+                    <input
+                            type="text"
+                            th:field="*{name}"
+                            placeholder="Ex.: Casamento Ana e Lucas">
+
+                    <small
+                            class="error"
+                            th:if="${#fields.hasErrors('name')}"
+                            th:errors="*{name}">
+                    </small>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Descrição</label>
+
+                    <textarea
+                            rows="5"
+                            th:field="*{description}"
+                            placeholder="Descreva seu evento...">
+                    </textarea>
+
+                    <small
+                            class="error"
+                            th:if="${#fields.hasErrors('description')}"
+                            th:errors="*{description}">
+                    </small>
+
+                </div>
+
+                <div class="date-grid">
+
+                    <div class="form-group">
+
+                        <label>Data de início</label>
+
+                        <input
+                                type="datetime-local"
+                                th:field="*{startDate}">
+
+                        <small
+                                class="error"
+                                th:if="${#fields.hasErrors('startDate')}"
+                                th:errors="*{startDate}">
+                        </small>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Data de término</label>
+
+                        <input
+                                type="datetime-local"
+                                th:field="*{endDate}">
+
+                        <small
+                                class="error"
+                                th:if="${#fields.hasErrors('endDate')}"
+                                th:errors="*{endDate}">
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Organizador</label>
+
+                    <select th:field="*{organizerId}">
+
+                        <option value="">
+                            Selecione um organizador
+                        </option>
+
+                        <option
+                                th:each="user : ${users}"
+                                th:value="${user.id}"
+                                th:text="${user.name}">
+                        </option>
+
+                    </select>
+
+                    <small
+                            class="error"
+                            th:if="${#fields.hasErrors('organizerId')}"
+                            th:errors="*{organizerId}">
+                    </small>
+
+                </div>
+
+                <div class="form-actions">
+
+                    <button type="submit">
+
+                        Criar Evento
+
+                    </button>
+
+                </div>
+
+            </form>
+
         </div>
-    </div>
 
-    <div>
-        <label>Descrição</label>
-        <input type="text" th:field="*{description}">
-        <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}">
-        </div>
-    </div>
+    </section>
 
-    <div>
-        <label>Início</label>
-        <input type="datetime-local" th:field="*{startDate}">
-        <div th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}">
-        </div>
-    </div>
-
-    <div>
-        <label>Fim</label>
-        <input type="datetime-local" th:field="*{endDate}">
-        <div th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}">
-        </div>
-    </div>
-
-    <div>
-        <label>Organizador</label>
-        <select th:field="*{organizerId}">
-            <option value="">Selecione um Organizador</option>
-            <option
-                th:each="user : ${users}"
-                th:value = "${user.id}"
-                th:text = "${user.name}">
-            </option>
-        </select>
-        <div th:if="${#fields.hasErrors('organizerId')}" th:errors="*{organizerId}">
-        </div>
-    </div>
-
-
-    <button type="submit">
-        Cadastrar
-    </button>
-
-</form>
+</div>
 
 </body>
+
 </html>
