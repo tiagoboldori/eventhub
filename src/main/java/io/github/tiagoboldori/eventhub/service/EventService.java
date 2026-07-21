@@ -3,8 +3,11 @@ package io.github.tiagoboldori.eventhub.service;
 import io.github.tiagoboldori.eventhub.dto.request.RegisterEventRequest;
 import io.github.tiagoboldori.eventhub.entity.Event;
 import io.github.tiagoboldori.eventhub.entity.User;
+import io.github.tiagoboldori.eventhub.enums.UserRole;
 import io.github.tiagoboldori.eventhub.repository.EventRepository;
 import io.github.tiagoboldori.eventhub.repository.UserRepository;
+import io.github.tiagoboldori.eventhub.security.CustomUserDetails;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,5 +41,19 @@ public class EventService {
 
     public List<Event> listOrganizerEvents(Long id){
         return eventRepository.findByOrganizerId(id);
+    }
+
+
+    public Event findOrganizerEvent(Long eventId, User loggedUser){
+
+        if(loggedUser.getRole()== UserRole.ADMIN){
+            return eventRepository.findById(eventId)
+                    .orElseThrow(() ->
+                            new RuntimeException("Evento não encontrado"));
+        }
+        return eventRepository
+                .findByIdAndOrganizerId(eventId, loggedUser.getId())
+                .orElseThrow(() ->
+                        new RuntimeException("Evento não encontrado"));
     }
 }

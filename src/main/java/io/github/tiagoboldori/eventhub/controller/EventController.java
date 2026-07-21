@@ -1,6 +1,7 @@
 package io.github.tiagoboldori.eventhub.controller;
 
 import io.github.tiagoboldori.eventhub.dto.request.RegisterEventRequest;
+import io.github.tiagoboldori.eventhub.dto.request.UpdateEventRequest;
 import io.github.tiagoboldori.eventhub.entity.Event;
 import io.github.tiagoboldori.eventhub.entity.User;
 import io.github.tiagoboldori.eventhub.repository.EventRepository;
@@ -12,10 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -58,5 +56,37 @@ public class EventController {
 
         eventService.register(request);
         return "redirect:/events/list_all";
+    }
+
+
+
+    @GetMapping("/{id}")
+    public String eventPage(
+            @PathVariable Long id,
+            Authentication authentication,
+            Model model
+    ){
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+        User user = userDetails.getUser();
+
+        Event event = eventService.findOrganizerEvent(id, user);
+
+        UpdateEventRequest request = new UpdateEventRequest();
+        request.setName(event.getName());
+        request.setDescription(event.getDescription());
+        request.setStartDate(event.getStartDate());
+        request.setEndDate(event.getEndDate());
+
+        model.addAttribute("request", request);
+        model.addAttribute("loggedUser", user);
+        model.addAttribute("eventId", event.getId());
+        return "events/manage";
+    }
+
+    @PostMapping("/{id}")
+    public String manage(
+            @PathVariable Long id
+    ){
+        return "redirect:/dashboard";
     }
 }
