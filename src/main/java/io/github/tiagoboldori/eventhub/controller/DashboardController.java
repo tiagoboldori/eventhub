@@ -27,7 +27,6 @@ public class DashboardController {
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
         User user = userDetails.getUser();
         List<Event> events = eventService.listOrganizerEvents(user.getId());
-        model.addAttribute("loggedUser", user);
         model.addAttribute("events", events);
 
         return "dashboard/index";

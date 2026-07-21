@@ -29,7 +29,7 @@
             </div>
 
             <form class="event-form"
-                  th:action="@{/events/{id}(id=${eventId})}"
+                  th:action="@{/events/{id}/manage(id=${eventId})}"
                   th:object="${request}"
                   method="post">
 

@@ -40,7 +40,7 @@ public class EventService {
     public List<Event> listAll() { return eventRepository.findAll();}
 
     public List<Event> listOrganizerEvents(Long id){
-        return eventRepository.findByOrganizerId(id);
+        return eventRepository.findByOrganizerIdOrderByStartDateAsc(id);
     }
 
 

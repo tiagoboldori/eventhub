@@ -36,11 +36,6 @@ public class EventController {
 
     @GetMapping("/register")
     public String register(Authentication authentication, Model model){
-        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-        User user = userDetails.getUser();
-        model.addAttribute("loggedUser", user);
-
-
 
         model.addAttribute("request", new RegisterEventRequest());
 
@@ -49,18 +44,23 @@ public class EventController {
     }
 
     @PostMapping("/register")
-    public String register(@Valid @ModelAttribute("request") RegisterEventRequest request, BindingResult bindingResult, Model model){
+    public String register(Authentication authentication, @Valid @ModelAttribute("request") RegisterEventRequest request, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
             return "events/register";
         }
 
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+        User user = userDetails.getUser();
+
+        request.setOrganizerId(user.getId());
+
         eventService.register(request);
-        return "redirect:/events/list_all";
+        return "redirect:/dashboard";
     }
 
 
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/manage")
     public String eventPage(
             @PathVariable Long id,
             Authentication authentication,
@@ -78,12 +78,11 @@ public class EventController {
         request.setEndDate(event.getEndDate());
 
         model.addAttribute("request", request);
-        model.addAttribute("loggedUser", user);
         model.addAttribute("eventId", event.getId());
         return "events/manage";
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/{id}/manage")
     public String manage(
             @PathVariable Long id
     ){

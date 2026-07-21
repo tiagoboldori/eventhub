@@ -101,32 +101,6 @@
 
                 </div>
 
-                <div class="form-group">
-
-                    <label>Organizador</label>
-
-                    <select th:field="*{organizerId}">
-
-                        <option value="">
-                            Selecione um organizador
-                        </option>
-
-                        <option
-                                th:each="user : ${users}"
-                                th:value="${user.id}"
-                                th:text="${user.name}">
-                        </option>
-
-                    </select>
-
-                    <small
-                            class="error"
-                            th:if="${#fields.hasErrors('organizerId')}"
-                            th:errors="*{organizerId}">
-                    </small>
-
-                </div>
-
                 <div class="form-actions">
 
                     <button type="submit">
