@@ -1,6 +1,7 @@
 package io.github.tiagoboldori.eventhub.service;
 
 import io.github.tiagoboldori.eventhub.dto.request.RegisterEventRequest;
+import io.github.tiagoboldori.eventhub.dto.request.UpdateEventRequest;
 import io.github.tiagoboldori.eventhub.entity.Event;
 import io.github.tiagoboldori.eventhub.entity.User;
 import io.github.tiagoboldori.eventhub.enums.UserRole;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -40,7 +42,7 @@ public class EventService {
     public List<Event> listAll() { return eventRepository.findAll();}
 
     public List<Event> listOrganizerEvents(Long id){
-        return eventRepository.findByOrganizerIdOrderByStartDateAsc(id);
+        return eventRepository.findByOrganizerIdOrderByStartDateDesc(id);
     }
 
 
@@ -55,5 +57,22 @@ public class EventService {
                 .findByIdAndOrganizerId(eventId, loggedUser.getId())
                 .orElseThrow(() ->
                         new RuntimeException("Evento não encontrado"));
+    }
+
+    public void updateEvent(Long eventId, UpdateEventRequest request, User loggedUser){
+        Event event = eventRepository.findById(eventId)
+                .orElseThrow(() ->
+                        new RuntimeException("Evento não encontrado"));
+
+        if (!Objects.equals(event.getOrganizer().getId(), loggedUser.getId())){
+            throw new RuntimeException("Usuário não autorizado");
+        }
+        event.setName(request.getName());
+        event.setDescription(request.getDescription());
+        event.setStartDate(request.getStartDate());
+        event.setEndDate(request.getEndDate());
+
+        eventRepository.save(event);
+
     }
 }

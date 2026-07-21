@@ -1,6 +1,7 @@
 package io.github.tiagoboldori.eventhub.controller;
 
 import io.github.tiagoboldori.eventhub.dto.request.RegisterEventRequest;
+import io.github.tiagoboldori.eventhub.dto.request.RegisterUserRequest;
 import io.github.tiagoboldori.eventhub.dto.request.UpdateEventRequest;
 import io.github.tiagoboldori.eventhub.entity.Event;
 import io.github.tiagoboldori.eventhub.entity.User;
@@ -28,11 +29,18 @@ public class EventController {
         this.userService = userService;
     }
 
+
+
+    //  ===========================  LISTAGEM DE EVENTOS (PARA TESTES) ==================================
     @GetMapping("/list_all")
     public String list(Model model){
         model.addAttribute("events", eventService.listAll());
         return "events/list_all";
     }
+
+
+
+    //  ===========================  CADASTRO DE EVENTOS ==================================
 
     @GetMapping("/register")
     public String register(Authentication authentication, Model model){
@@ -59,6 +67,7 @@ public class EventController {
     }
 
 
+//  ===========================  EDIÇÃO DE EVENTOS ==================================
 
     @GetMapping("/{id}/manage")
     public String eventPage(
@@ -84,8 +93,36 @@ public class EventController {
 
     @PostMapping("/{id}/manage")
     public String manage(
-            @PathVariable Long id
+            @PathVariable Long id,
+            Authentication authentication,
+            @Valid @ModelAttribute("request") UpdateEventRequest request,
+            BindingResult bindingResult,
+            Model model
+    ){
+
+        if(bindingResult.hasErrors()){
+            return "redirect:events/"+id+"/manage";
+        }
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+        User loggedUser = userDetails.getUser();
+
+        eventService.updateEvent(id, request, loggedUser);
+
+        model.addAttribute("customMessage", "Evento alterado com sucesso!");
+        return "redirect:/dashboard";
+    }
+
+
+    //  ===========================  PARTICIPAÇÃO EM EVENTOS ==================================
+    @GetMapping("/{id}/join/{pwd}")
+    public String joinPage(
+            @PathVariable Long id,
+            @PathVariable String pwd,
+            Authentication authentication,
+            BindingResult bindingResult,
+            Model model
     ){
         return "redirect:/dashboard";
     }
+
 }

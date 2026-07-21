@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface EventRepository extends JpaRepository<Event,Long> {
-    List<Event> findByOrganizerIdOrderByStartDateAsc(Long organizerId);
+    List<Event> findByOrganizerIdOrderByStartDateDesc(Long organizerId);
 
     Optional<Event> findByIdAndOrganizerId(
             Long id,
