@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("/events")
@@ -113,7 +114,7 @@ public class EventController {
     }
 
 
-    //  ===========================  PARTICIPAÇÃO EM EVENTOS ==================================
+    //  ===========================  PARTICIPAÇÃO EM EVENTOS (TESTES) ==================================
     @GetMapping("/{id}/join/{pwd}")
     public String joinPage(
             @PathVariable Long id,
@@ -122,6 +123,9 @@ public class EventController {
             BindingResult bindingResult,
             Model model
     ){
+        if (Objects.equals(pwd, "OlaMundo") && id == 1){
+            System.out.println("Usuário entrou na sala");
+        }
         return "redirect:/dashboard";
     }
 
