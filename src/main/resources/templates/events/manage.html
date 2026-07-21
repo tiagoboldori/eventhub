@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/base}">
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout/base}">
 
 <head>
 
-    <link rel="stylesheet"
-          th:href="@{/css/pages/registerEvent.css}">
+    <title>Gerenciar Evento</title>
+
+    <link
+            rel="stylesheet"
+            th:href="@{/css/pages/manageEvent.css}">
 
 </head>
 
@@ -14,75 +18,457 @@
 
 <div layout:fragment="content">
 
-    <section class="register-event">
+    <section class="manage-event">
 
-        <div class="form-container">
+        <div class="manage-container">
 
-            <div class="form-header">
+            <!-- ===================================================== -->
+            <!-- HEADER -->
+            <!-- ===================================================== -->
 
-                <h1>Gerir Evento</h1>
+            <header class="manage-header">
 
-                <p>
-                    Preencha as informações abaixo para editar um evento.
-                </p>
+                <div>
 
-            </div>
+                    <span class="page-tag">
+                        Administração
+                    </span>
 
-            <form class="event-form"
-                  th:action="@{/events/{id}/manage(id=${eventId})}"
-                  th:object="${request}"
-                  method="post">
+                    <h1 th:text="${request.name}">
+                        Nome do Evento
+                    </h1>
 
-                <div class="form-group">
-
-                    <label for="name">Nome do Evento</label>
-
-                    <input id="name"
-                           type="text"
-                           th:field="*{name}">
+                    <p>
+                        Gerencie informações, módulos e configurações do evento.
+                    </p>
 
                 </div>
 
-                <div class="form-group">
+                <div class="event-status">
 
-                    <label for="description">Descrição</label>
+                    <span class="status active">
 
-                    <textarea id="description"
-                              rows="5"
-                              th:field="*{description}"
-                              placeholder="Descreva seu evento...">
-                    </textarea>
+                        ● Ativo
+
+                    </span>
 
                 </div>
 
-                <div class="date-grid">
+            </header>
 
-                    <div class="form-group">
+            <!-- ===================================================== -->
+            <!-- RESUMO -->
+            <!-- ===================================================== -->
 
-                        <label for="startDate">Data de início</label>
+            <section class="summary-grid">
 
-                        <input id="startDate"
-                               type="datetime-local"
-                               th:field="*{startDate}">
+                <div class="summary-card">
+
+                    <h3>Data de início</h3>
+
+                    <p th:text="${#temporals.format(request.startDate,'dd/MM/yyyy HH:mm')}">
+
+                    </p>
+
+                </div>
+
+                <div class="summary-card">
+
+                    <h3>Data de término</h3>
+
+                    <p th:text="${#temporals.format(request.endDate,'dd/MM/yyyy HH:mm')}">
+
+                    </p>
+
+                </div>
+
+                <div class="summary-card">
+
+                    <h3>Status</h3>
+
+                    <p>Evento publicado</p>
+
+                </div>
+
+            </section>
+
+            <!-- ===================================================== -->
+            <!-- FORMULÁRIO -->
+            <!-- ===================================================== -->
+
+            <form
+
+                    class="event-form"
+
+                    th:action="@{/events/{id}/manage(id=${eventId})}"
+
+                    th:object="${request}"
+
+                    method="post">
+
+                <section class="form-section">
+
+                    <div class="section-title">
+
+                        <h2>Informações Básicas</h2>
+
+                        <span>
+
+                            Obrigatório
+
+                        </span>
 
                     </div>
 
                     <div class="form-group">
 
-                        <label for="endDate">Data de término</label>
+                        <label for="name">
 
-                        <input id="endDate"
-                               type="datetime-local"
-                               th:field="*{endDate}">
+                            Nome
+
+                        </label>
+
+                        <input
+
+                                id="name"
+
+                                type="text"
+
+                                th:field="*{name}">
 
                     </div>
 
-                </div>
+                    <div class="form-group">
+
+                        <label for="description">
+
+                            Descrição
+
+                        </label>
+
+                        <textarea
+
+                                id="description"
+
+                                rows="6"
+
+                                th:field="*{description}">
+
+                        </textarea>
+
+                    </div>
+
+                    <div class="date-grid">
+
+                        <div class="form-group">
+
+                            <label for="startDate">
+
+                                Data de início
+
+                            </label>
+
+                            <input
+
+                                    id="startDate"
+
+                                    type="datetime-local"
+
+                                    th:field="*{startDate}">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="endDate">
+
+                                Data de término
+
+                            </label>
+
+                            <input
+
+                                    id="endDate"
+
+                                    type="datetime-local"
+
+                                    th:field="*{endDate}">
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- ===================================================== -->
+                <!-- MÓDULOS -->
+                <!-- ===================================================== -->
+
+                <section class="form-section">
+
+                    <div class="section-title">
+
+                        <h2>Módulos do Evento</h2>
+
+                        <span>
+
+                            Em expansão
+
+                        </span>
+
+                    </div>
+
+                    <p class="section-description">
+
+                        Estes módulos aumentarão as funcionalidades disponíveis
+                        para seus convidados.
+
+                    </p>
+
+                    <div class="modules-grid">
+
+                        <div class="module-card active">
+
+                            <div class="module-icon">
+
+                                📱
+
+                            </div>
+
+                            <h3>
+
+                                Página Pública
+
+                            </h3>
+
+                            <p>
+
+                                Página principal do evento.
+
+                            </p>
+
+                            <span class="module-status">
+
+                                Ativado
+
+                            </span>
+
+                        </div>
+
+                        <div class="module-card active">
+
+                            <div class="module-icon">
+
+                                📷
+
+                            </div>
+
+                            <h3>
+
+                                QR Code
+
+                            </h3>
+
+                            <p>
+
+                                Compartilhamento através de QR Code.
+
+                            </p>
+
+                            <span class="module-status">
+
+                                Ativado
+
+                            </span>
+
+                        </div>
+
+                        <div class="module-card disabled">
+
+                            <div class="module-icon">
+
+                                🖼️
+
+                            </div>
+
+                            <h3>
+
+                                Galeria
+
+                            </h3>
+
+                            <p>
+
+                                Fotos compartilhadas pelos convidados.
+
+                            </p>
+
+                            <span class="coming-soon">
+
+                                Em breve
+
+                            </span>
+
+                        </div>
+
+                        <div class="module-card disabled">
+
+                            <div class="module-icon">
+
+                                🎁
+
+                            </div>
+
+                            <h3>
+
+                                Lista de Presentes
+
+                            </h3>
+
+                            <p>
+
+                                Organização da lista de presentes.
+
+                            </p>
+
+                            <span class="coming-soon">
+
+                                Em breve
+
+                            </span>
+
+                        </div>
+
+                        <div class="module-card disabled">
+
+                            <div class="module-icon">
+
+                                ✅
+
+                            </div>
+
+                            <h3>
+
+                                Check-in
+
+                            </h3>
+
+                            <p>
+
+                                Controle de entrada dos convidados.
+
+                            </p>
+
+                            <span class="coming-soon">
+
+                                Em breve
+
+                            </span>
+
+                        </div>
+
+                        <div class="module-card disabled">
+
+                            <div class="module-icon">
+
+                                💬
+
+                            </div>
+
+                            <h3>
+
+                                Mural
+
+                            </h3>
+
+                            <p>
+
+                                Mensagens deixadas pelos convidados.
+
+                            </p>
+
+                            <span class="coming-soon">
+
+                                Em breve
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- ===================================================== -->
+                <!-- RESUMO -->
+                <!-- ===================================================== -->
+
+                <section class="form-section">
+
+                    <div class="section-title">
+
+                        <h2>
+
+                            Resumo
+
+                        </h2>
+
+                    </div>
+
+                    <div class="summary-box">
+
+                        <ul>
+
+                            <li>
+
+                                ✔ Evento criado com sucesso.
+
+                            </li>
+
+                            <li>
+
+                                ✔ Página pública disponível.
+
+                            </li>
+
+                            <li>
+
+                                ✔ QR Code habilitado.
+
+                            </li>
+
+                            <li>
+
+                                ○ Novos módulos serão adicionados futuramente.
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </section>
+
+                <!-- ===================================================== -->
+                <!-- BOTÕES -->
+                <!-- ===================================================== -->
 
                 <div class="form-actions">
 
+                    <a
+
+                            class="cancel-btn"
+
+                            th:href="@{/dashboard}">
+
+                        Cancelar
+
+                    </a>
+
                     <button type="submit">
-                        Atualizar Evento
+
+                        Salvar Alterações
+
                     </button>
 
                 </div>
@@ -96,4 +482,5 @@
 </div>
 
 </body>
+
 </html>
