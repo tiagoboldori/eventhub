@@ -114,19 +114,6 @@ public class EventController {
     }
 
 
-    //  ===========================  PARTICIPAÇÃO EM EVENTOS (TESTES) ==================================
-    @GetMapping("/{id}/join/{pwd}")
-    public String joinPage(
-            @PathVariable Long id,
-            @PathVariable String pwd,
-            Authentication authentication,
-            BindingResult bindingResult,
-            Model model
-    ){
-        if (Objects.equals(pwd, "OlaMundo") && id == 1){
-            System.out.println("Usuário entrou na sala");
-        }
-        return "redirect:/dashboard";
-    }
+
 
 }

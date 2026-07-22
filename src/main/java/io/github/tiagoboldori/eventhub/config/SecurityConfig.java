@@ -25,6 +25,7 @@ public class SecurityConfig {
 
                         // Públicas
                         .requestMatchers(
+                                "/participant/**",
                                 "/auth/login",
                                 "/auth/register",
                                 "/css/**",

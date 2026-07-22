@@ -6,6 +6,7 @@ CREATE TABLE events(
     end_date TIMESTAMP NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     organizer_id BIGINT NOT NULL,
+    access_token VARCHAR(100) UNIQUE,
     CONSTRAINT fk_organizer
            FOREIGN KEY(organizer_id)
            REFERENCES users(id)

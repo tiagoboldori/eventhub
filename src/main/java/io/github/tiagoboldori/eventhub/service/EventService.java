@@ -35,7 +35,7 @@ public class EventService {
         event.setEndDate(request.getEndDate());
         event.setStartDate(request.getStartDate());
         event.setDescription(request.getDescription());
-
+        event.setAccessToken(request.getName());
         eventRepository.save(event);
     }
 
@@ -62,7 +62,8 @@ public class EventService {
     public void updateEvent(Long eventId, UpdateEventRequest request, User loggedUser){
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() ->
-                        new RuntimeException("Evento não encontrado"));
+                        new RuntimeException("Evento não encontrado")
+                );
 
         if (!Objects.equals(event.getOrganizer().getId(), loggedUser.getId())){
             throw new RuntimeException("Usuário não autorizado");
@@ -74,5 +75,12 @@ public class EventService {
 
         eventRepository.save(event);
 
+    }
+
+    public Event findById(Long id){
+        return eventRepository.findById(id).
+                orElseThrow(() ->
+                        new RuntimeException("Evento não encontrado")
+                );
     }
 }

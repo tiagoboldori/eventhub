@@ -32,9 +32,18 @@ public class Event {
     @JoinColumn(name="organizer_id")
     private User organizer;
 
+    private String accessToken;
 
     public Event(){
 
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 
     public Long getId() {
