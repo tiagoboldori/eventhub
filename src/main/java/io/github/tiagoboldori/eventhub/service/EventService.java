@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class EventService {
@@ -35,7 +36,9 @@ public class EventService {
         event.setEndDate(request.getEndDate());
         event.setStartDate(request.getStartDate());
         event.setDescription(request.getDescription());
-        event.setAccessToken(request.getName());
+        event.setAccessToken(
+                UUID.randomUUID().toString()
+        );
         eventRepository.save(event);
     }
 

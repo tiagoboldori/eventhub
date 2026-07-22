@@ -43,7 +43,8 @@ public class ParticipantController {
     ) {
 
         Event event = eventService.findById(eventId);
-
+        System.out.println("URL: " + eventToken);
+        System.out.println("Banco: " + event.getAccessToken());
         if (!event.getAccessToken().equals(eventToken)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
@@ -57,6 +58,7 @@ public class ParticipantController {
         eventSessionService.save(eventSession);
 
         model.addAttribute("event", event);
+        model.addAttribute("eventSession", eventSession);
 
         return "participant/event";
     }

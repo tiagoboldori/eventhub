@@ -113,7 +113,4 @@ public class EventController {
         return "redirect:/dashboard";
     }
 
-
-
-
 }

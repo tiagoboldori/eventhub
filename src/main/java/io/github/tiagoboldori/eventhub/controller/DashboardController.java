@@ -1,7 +1,9 @@
 package io.github.tiagoboldori.eventhub.controller;
 
+import io.github.tiagoboldori.eventhub.dto.response.EventDashboardResponse;
 import io.github.tiagoboldori.eventhub.entity.Event;
 import io.github.tiagoboldori.eventhub.entity.User;
+import io.github.tiagoboldori.eventhub.mapper.EventMapper;
 import io.github.tiagoboldori.eventhub.repository.EventRepository;
 import io.github.tiagoboldori.eventhub.security.CustomUserDetails;
 import io.github.tiagoboldori.eventhub.service.EventService;
@@ -17,9 +19,11 @@ import java.util.List;
 @RequestMapping("/dashboard")
 public class DashboardController {
     private final EventService eventService;
+    private final EventMapper eventMapper;
 
-    public DashboardController(EventService eventService) {
+    public DashboardController(EventService eventService, EventMapper eventMapper) {
         this.eventService = eventService;
+        this.eventMapper = eventMapper;
     }
 
     @GetMapping("/")
@@ -27,6 +31,7 @@ public class DashboardController {
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
         User user = userDetails.getUser();
         List<Event> events = eventService.listOrganizerEvents(user.getId());
+        List<EventDashboardResponse> mappedEvents = eventMapper.toEventDashboardResponseList(events);
         model.addAttribute("events", events);
 
         return "dashboard/index";

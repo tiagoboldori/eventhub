@@ -39,8 +39,8 @@ public class EventSession {
         return sessionToken;
     }
 
-    public void setSessionToken(String deviceHash) {
-        this.sessionToken = deviceHash;
+    public void setSessionToken(String sessionToken) {
+        this.sessionToken = sessionToken;
     }
 
     public LocalDateTime getFirstAccess() {
