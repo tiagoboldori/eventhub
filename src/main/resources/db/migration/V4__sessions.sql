@@ -12,12 +12,21 @@ CREATE TABLE event_sessions (
 
     access_count INT NOT NULL DEFAULT 1,
 
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    last_ip VARCHAR(45),
+
+    last_user_agent VARCHAR(500),
+
     CONSTRAINT fk_event_session_event
         FOREIGN KEY (event_id)
             REFERENCES events(id)
             ON DELETE CASCADE,
 
-    CONSTRAINT uk_event_session_device
+    CONSTRAINT uk_event_session_token
         UNIQUE (event_id, session_token)
 
 );
+
+CREATE INDEX idx_event_session_event
+    ON event_sessions(event_id);

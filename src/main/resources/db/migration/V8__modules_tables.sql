@@ -14,7 +14,7 @@ CREATE TABLE presence_confirmations (
 
     CONSTRAINT fk_presence_session
         FOREIGN KEY (event_session_id)
-            REFERENCES sessions(id)
+            REFERENCES event_sessions(id)
             ON DELETE CASCADE
 
 );
@@ -45,7 +45,7 @@ CREATE TABLE wall_messages (
 
    CONSTRAINT fk_wall_session
        FOREIGN KEY (event_session_id)
-           REFERENCES sessions(id)
+           REFERENCES event_sessions(id)
            ON DELETE CASCADE
 
 );
@@ -131,7 +131,7 @@ CREATE TABLE poll_votes (
 
     CONSTRAINT fk_vote_session
         FOREIGN KEY (event_session_id)
-            REFERENCES sessions(id)
+            REFERENCES event_sessions(id)
             ON DELETE CASCADE,
 
     CONSTRAINT fk_vote_poll
@@ -149,3 +149,6 @@ CREATE INDEX idx_vote_option
 
 CREATE UNIQUE INDEX uk_poll_session
     ON poll_votes(poll_id, event_session_id);
+
+CREATE INDEX idx_vote_poll
+    ON poll_votes(poll_id);
