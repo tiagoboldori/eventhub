@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${event.name} + ' | EventHub'">EventHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/pages/hub.css}">
+</head>
+<body>
+<header class="hero">
+    <div class="hero-overlay">
+        <span class="hero-badge">EVENTHUB</span>
+        <h1 th:text="${event.name}">Nome do Evento</h1>
+        <p class="hero-date" th:text="${#temporals.format(event.startDate,'dd/MM/yyyy HH:mm')}">01/01/2027</p>
+        <p class="hero-description" th:text="${event.description}">Descrição do evento.</p>
+        <div class="hero-actions">
+            <button class="primary-btn">Confirmar Presença</button>
+            <a href="#modules" class="secondary-btn">Explorar</a>
+        </div>
+    </div>
+</header>
+<main class="container">
+    <section class="quick-info">
+        <div class="info-card"><div class="icon">📍</div><h3>Local</h3><p>Em breve</p></div>
+        <div class="info-card"><div class="icon">🕒</div><h3>Horário</h3><p th:text="${#temporals.format(event.startDate,'HH:mm')}">18:00</p></div>
+        <div class="info-card"><div class="icon">👥</div><h3>Convidados</h3><p>Em breve</p></div>
+        <div class="info-card"><div class="icon">👔</div><h3>Dress Code</h3><p>Opcional</p></div>
+    </section>
+    <section id="modules" class="modules">
+        <div class="section-header"><h2>Hub do Evento</h2><p>Todos os recursos disponíveis para este evento.</p></div>
+        <div class="modules-grid">
+            <div class="module-card"><div class="module-icon">📷</div><h3>Galeria</h3><p>Compartilhe fotos e momentos.</p><span class="coming">Em breve</span></div>
+            <div class="module-card"><div class="module-icon">🎁</div><h3>Lista de Presentes</h3><p>Veja sugestões de presentes.</p><span class="coming">Em breve</span></div>
+            <div class="module-card"><div class="module-icon">💬</div><h3>Mural</h3><p>Envie uma mensagem aos anfitriões.</p><span class="coming">Em breve</span></div>
+            <div class="module-card"><div class="module-icon">📅</div><h3>Cronograma</h3><p>Acompanhe a programação.</p><span class="coming">Em breve</span></div>
+            <div class="module-card"><div class="module-icon">🍽️</div><h3>Cardápio</h3><p>Conheça o menu do evento.</p><span class="coming">Em breve</span></div>
+            <div class="module-card"><div class="module-icon">🗺️</div><h3>Mapa</h3><p>Visualize como chegar.</p><span class="coming">Em breve</span></div>
+        </div>
+    </section>
+    <section class="about-event">
+        <h2>Sobre este evento</h2>
+        <p th:text="${event.description}">Descrição detalhada.</p>
+    </section>
+</main>
+<footer class="footer"><p>Powered by <strong>EventHub</strong></p></footer>
+</body>
+</html>

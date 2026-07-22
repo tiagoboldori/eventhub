@@ -1,0 +1,17 @@
+CREATE TABLE modules (
+
+     id BIGSERIAL PRIMARY KEY,
+
+     name VARCHAR(100) NOT NULL,
+
+     slug VARCHAR(50) NOT NULL UNIQUE,
+
+     description VARCHAR(255),
+
+     icon VARCHAR(100),
+
+     default_enabled BOOLEAN NOT NULL DEFAULT FALSE,
+
+     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+
+);

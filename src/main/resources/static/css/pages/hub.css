@@ -1,0 +1,595 @@
+/*==========================================================
+                    EVENT HUB PAGE
+==========================================================*/
+
+:root{
+
+    --primary:#F28C28;
+    --primary-hover:#E67E22;
+    --primary-light:#F9C784;
+
+    --secondary:#4F7CAC;
+
+    --background:#FFF8F2;
+    --surface:#FFFFFF;
+
+    --text-primary:#2B2D42;
+    --text-secondary:#6C757D;
+    --text-light:#FFFFFF;
+
+    --border:#E9ECEF;
+
+    --success:#43AA8B;
+    --warning:#F9C74F;
+    --danger:#E63946;
+
+    --shadow-sm:0 2px 6px rgba(0,0,0,.08);
+    --shadow-md:0 10px 28px rgba(0,0,0,.12);
+
+    --radius-sm:8px;
+    --radius-md:12px;
+    --radius-lg:22px;
+
+}
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+body{
+
+    font-family:"Inter",sans-serif;
+
+    background:var(--background);
+
+    color:var(--text-primary);
+
+}
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+    transition:.25s;
+
+}
+
+/*==========================================================
+                        HERO
+==========================================================*/
+
+.hero{
+
+    position:relative;
+
+    min-height:75vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    text-align:center;
+
+    padding:40px;
+
+    background:
+
+            linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--primary-light)
+            );
+
+}
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+
+    height:500px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.12);
+
+    filter:blur(70px);
+
+    top:-180px;
+
+    left:-180px;
+
+}
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:600px;
+
+    height:600px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    filter:blur(70px);
+
+    right:-250px;
+
+    bottom:-250px;
+
+}
+
+.hero-overlay{
+
+    position:relative;
+
+    z-index:2;
+
+    width:min(800px,95%);
+
+}
+
+.hero-badge{
+
+    display:inline-block;
+
+    padding:8px 20px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.18);
+
+    color:white;
+
+    letter-spacing:2px;
+
+    font-size:.8rem;
+
+    margin-bottom:25px;
+
+}
+
+.hero h1{
+
+    color:white;
+
+    font-size:clamp(2.8rem,5vw,4.8rem);
+
+    margin-bottom:20px;
+
+}
+
+.hero-date{
+
+    color:white;
+
+    font-size:1.15rem;
+
+    opacity:.95;
+
+}
+
+.hero-description{
+
+    margin-top:25px;
+
+    color:white;
+
+    font-size:1.1rem;
+
+    line-height:1.8;
+
+    opacity:.95;
+
+}
+
+.hero-actions{
+
+    margin-top:40px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+}
+
+.primary-btn{
+
+    background:white;
+
+    color:var(--primary);
+
+    padding:15px 32px;
+
+    border-radius:var(--radius-md);
+
+    font-weight:700;
+
+}
+
+.primary-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.secondary-btn{
+
+    padding:15px 32px;
+
+    border-radius:var(--radius-md);
+
+    border:2px solid rgba(255,255,255,.45);
+
+    color:white;
+
+    font-weight:700;
+
+    transition:.25s;
+
+}
+
+.secondary-btn:hover{
+
+    background:rgba(255,255,255,.15);
+
+}
+
+/*==========================================================
+                    CONTAINER
+==========================================================*/
+
+.container{
+
+    width:min(1200px,92%);
+
+    margin:auto;
+
+}
+
+/*==========================================================
+                    QUICK INFO
+==========================================================*/
+
+.quick-info{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+    margin-top:-60px;
+
+    position:relative;
+
+    z-index:10;
+
+}
+
+.info-card{
+
+    background:white;
+
+    border-radius:var(--radius-lg);
+
+    padding:28px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow-md);
+
+}
+
+.info-card .icon{
+
+    font-size:2rem;
+
+    margin-bottom:15px;
+
+}
+
+.info-card h3{
+
+    margin-bottom:10px;
+
+}
+
+.info-card p{
+
+    color:var(--text-secondary);
+
+}
+
+/*==========================================================
+                        MODULES
+==========================================================*/
+
+.modules{
+
+    margin-top:70px;
+
+}
+
+.section-header{
+
+    text-align:center;
+
+    margin-bottom:45px;
+
+}
+
+.section-header h2{
+
+    font-size:2rem;
+
+}
+
+.section-header p{
+
+    margin-top:12px;
+
+    color:var(--text-secondary);
+
+}
+
+.modules-grid{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(auto-fit,minmax(270px,1fr));
+
+    gap:25px;
+
+}
+
+.module-card{
+
+    background:white;
+
+    border-radius:var(--radius-lg);
+
+    padding:30px;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:.25s;
+
+}
+
+.module-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+.module-icon{
+
+    font-size:2.5rem;
+
+    margin-bottom:18px;
+
+}
+
+.module-card h3{
+
+    margin-bottom:12px;
+
+}
+
+.module-card p{
+
+    color:var(--text-secondary);
+
+    line-height:1.7;
+
+}
+
+.coming{
+
+    margin-top:18px;
+
+    display:inline-block;
+
+    padding:7px 14px;
+
+    border-radius:999px;
+
+    background:#FFF3E6;
+
+    color:var(--primary);
+
+    font-weight:600;
+
+    font-size:.85rem;
+
+}
+
+/*==========================================================
+                    ABOUT EVENT
+==========================================================*/
+
+.about-event{
+
+    margin-top:80px;
+
+    background:white;
+
+    padding:45px;
+
+    border-radius:var(--radius-lg);
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.about-event h2{
+
+    margin-bottom:20px;
+
+}
+
+.about-event p{
+
+    line-height:1.9;
+
+    color:var(--text-secondary);
+
+}
+
+/*==========================================================
+                    FUTURE MODULES
+==========================================================*/
+
+.future-section{
+
+    margin-top:70px;
+
+}
+
+.future-grid{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(auto-fit,minmax(250px,1fr));
+
+    gap:20px;
+
+}
+
+.future-card{
+
+    background:white;
+
+    border:2px dashed var(--border);
+
+    border-radius:var(--radius-lg);
+
+    padding:28px;
+
+    text-align:center;
+
+}
+
+.future-card h3{
+
+    margin-bottom:10px;
+
+}
+
+.future-card p{
+
+    color:var(--text-secondary);
+
+    line-height:1.6;
+
+}
+
+/*==========================================================
+                        FOOTER
+==========================================================*/
+
+.footer{
+
+    margin-top:80px;
+
+    padding:40px;
+
+    text-align:center;
+
+    color:var(--text-secondary);
+
+}
+
+/*==========================================================
+                    RESPONSIVO
+==========================================================*/
+
+@media(max-width:900px){
+
+    .hero{
+
+        min-height:65vh;
+
+    }
+
+    .quick-info{
+
+        margin-top:30px;
+
+    }
+
+}
+
+@media(max-width:700px){
+
+    .hero{
+
+        padding:60px 20px;
+
+    }
+
+    .hero h1{
+
+        font-size:2.5rem;
+
+    }
+
+    .hero-description{
+
+        font-size:1rem;
+
+    }
+
+    .about-event{
+
+        padding:28px;
+
+    }
+
+    .primary-btn,
+
+    .secondary-btn{
+
+        width:100%;
+
+    }
+
+}
