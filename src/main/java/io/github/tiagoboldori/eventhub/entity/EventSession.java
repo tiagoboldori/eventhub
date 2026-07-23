@@ -28,6 +28,15 @@ public class EventSession {
     @JoinColumn(name = "event_id")
     private Event event;
 
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "last_ip")
+    private String lastIp;
+
+    @Column(name = "last_user_agent")
+    private String lastUserAgent;
+
     public EventSession() {
     }
 
@@ -69,5 +78,25 @@ public class EventSession {
 
     public void setEvent(Event event) {
         this.event = event;
+    }
+
+    public String getLastIp() {
+        return lastIp;
+    }
+
+    public void setLastIp(String lastIp) {
+        this.lastIp = lastIp;
+    }
+
+    public String getLastUserAgent() {
+        return lastUserAgent;
+    }
+
+    public void setLastUserAgent(String lastUserAgent) {
+        this.lastUserAgent = lastUserAgent;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 }

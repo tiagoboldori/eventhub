@@ -78,9 +78,6 @@ public class User {
     public LocalDateTime getCreatedAt() {
         return this.createdAt;
     }
-    public void setCreatedAt(LocalDateTime time){
-        this.createdAt = time;
-    }
 
     public UserRole getRole() {
         return role;
