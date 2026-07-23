@@ -30,3 +30,6 @@ CREATE TABLE event_sessions (
 
 CREATE INDEX idx_event_session_event
     ON event_sessions(event_id);
+
+CREATE INDEX idx_session_token
+    ON event_sessions(session_token);
