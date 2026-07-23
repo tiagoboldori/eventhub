@@ -6,7 +6,7 @@ O projeto nasceu com foco em eventos sociais, como casamentos, aniversários e c
 
 ---
 
-## ✨ Funcionalidades
+## Funcionalidades
 
 Atualmente o projeto contempla:
 
@@ -21,7 +21,7 @@ Atualmente o projeto contempla:
 
 ---
 
-## 🛠 Tecnologias
+## Tecnologias
 
 ### Backend
 
@@ -46,7 +46,7 @@ Atualmente o projeto contempla:
 
 ---
 
-## 📁 Estrutura
+## Estrutura
 
 ```
 src
@@ -64,7 +64,7 @@ src
 
 ---
 
-## 🏗 Arquitetura
+## Arquitetura
 
 O projeto segue uma arquitetura em camadas para favorecer organização, manutenção e escalabilidade.
 
@@ -80,7 +80,7 @@ PostgreSQL
 
 ---
 
-## 🚀 Executando o projeto
+## Executando o projeto
 
 ### Pré-requisitos
 
@@ -112,7 +112,7 @@ mvn spring-boot:run
 
 ---
 
-## 📌 Roadmap
+## Roadmap
 
 Funcionalidades planejadas para as próximas versões:
 
@@ -130,7 +130,7 @@ Funcionalidades planejadas para as próximas versões:
 
 ---
 
-## 🎯 Objetivos
+## Objetivos
 
 O projeto foi desenvolvido priorizando:
 
@@ -143,7 +143,7 @@ O projeto foi desenvolvido priorizando:
 
 ---
 
-## 👨‍💻 Autor
+## Autor
 
 **Tiago Braga Boldori**
 
