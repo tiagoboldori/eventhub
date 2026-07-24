@@ -2,6 +2,8 @@ CREATE TABLE event_sessions (
 
     id BIGSERIAL PRIMARY KEY,
 
+    name VARCHAR(50),
+
     event_id BIGINT NOT NULL,
 
     session_token VARCHAR(255) NOT NULL,

@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 
 
 @Entity
-@Table(name="presence_config")
-public class PresenceConfig {
+@Table(name="wall_config")
+public class WallConfig {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,18 +19,19 @@ public class PresenceConfig {
 
     private boolean enabled;
 
+    @Column(name="allow_images")
+    private boolean allowImages;
 
-    @Column(name = "allow_multiple_checkins")
-    private boolean allowMultipleCheckins;
+    @Column(name="max_message_length")
+    private Integer maxMessageLength;
 
 
     @Column(name = "created_at", insertable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    public PresenceConfig(){
+    public WallConfig(){
 
     }
-
 
     public Long getId() {
         return id;
@@ -53,12 +54,20 @@ public class PresenceConfig {
         this.enabled = enabled;
     }
 
-    public boolean isAllowMultipleCheckins() {
-        return allowMultipleCheckins;
+    public boolean isAllowImages() {
+        return allowImages;
     }
 
-    public void setAllowMultipleCheckins(boolean allowMultipleCheckins) {
-        this.allowMultipleCheckins = allowMultipleCheckins;
+    public void setAllowImages(boolean allowImages) {
+        this.allowImages = allowImages;
+    }
+
+    public Integer getMaxMessageLength() {
+        return maxMessageLength;
+    }
+
+    public void setMaxMessageLength(Integer maxMessageLength) {
+        this.maxMessageLength = maxMessageLength;
     }
 
     public LocalDateTime getCreatedAt() {

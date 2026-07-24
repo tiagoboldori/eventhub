@@ -12,6 +12,8 @@ public class EventSession {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String name;
+
     @Column(name = "session_token", nullable = false)
     private String sessionToken;
 

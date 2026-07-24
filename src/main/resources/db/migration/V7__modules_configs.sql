@@ -8,14 +8,6 @@ CREATE TABLE presence_config (
 
     enabled BOOLEAN NOT NULL DEFAULT TRUE,
 
-    require_name BOOLEAN NOT NULL DEFAULT TRUE,
-
-    require_phone BOOLEAN NOT NULL DEFAULT FALSE,
-
-    require_email BOOLEAN NOT NULL DEFAULT FALSE,
-
-    allow_guest BOOLEAN NOT NULL DEFAULT TRUE,
-
     allow_multiple_checkins BOOLEAN NOT NULL DEFAULT FALSE,
 
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -41,11 +33,7 @@ CREATE TABLE wall_config (
 
     enabled BOOLEAN NOT NULL DEFAULT TRUE,
 
-    anonymous BOOLEAN NOT NULL DEFAULT FALSE,
-
     allow_images BOOLEAN NOT NULL DEFAULT FALSE,
-
-    moderation BOOLEAN NOT NULL DEFAULT FALSE,
 
     max_message_length INTEGER NOT NULL DEFAULT 500,
 
