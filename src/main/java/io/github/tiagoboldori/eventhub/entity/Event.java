@@ -48,10 +48,6 @@ public class Event {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -88,9 +84,6 @@ public class Event {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
 
     public User getOrganizer() {
         return organizer;

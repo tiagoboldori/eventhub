@@ -12,13 +12,13 @@ public class EventModule {
     private Long id;
 
 
-    @ManyToOne
-    @JoinColumn(name="event_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="event_id", nullable = false)
     private Event event;
 
 
-    @ManyToOne
-    @JoinColumn(name="module_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="module_id", nullable = false)
     private Module module;
 
 

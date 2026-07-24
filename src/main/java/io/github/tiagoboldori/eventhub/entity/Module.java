@@ -1,12 +1,11 @@
 package io.github.tiagoboldori.eventhub.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name="modules")
 public class Module {
 
     @Id
@@ -22,7 +21,7 @@ public class Module {
     private String icon;
 
     @Column(name = "default_enabled")
-    private Boolean defaultEnabled;
+    private boolean defaultEnabled;
 
     @Column(name = "created_at", insertable = false, updatable = false)
     private LocalDateTime createdAt;
