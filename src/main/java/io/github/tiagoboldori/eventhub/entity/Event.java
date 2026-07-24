@@ -3,6 +3,8 @@ package io.github.tiagoboldori.eventhub.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -29,6 +31,9 @@ public class Event {
     @ManyToOne
     @JoinColumn(name="organizer_id")
     private User organizer;
+
+    @OneToMany(mappedBy = "event")
+    private List<EventModule> modules = new ArrayList<>();
 
     private String accessToken;
 
