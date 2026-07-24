@@ -1,13 +1,10 @@
 package io.github.tiagoboldori.eventhub.repository;
 
 import io.github.tiagoboldori.eventhub.entity.Event;
-import io.github.tiagoboldori.eventhub.entity.Module;
+import io.github.tiagoboldori.eventhub.entity.EventModule;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-import java.util.Optional;
-
-public interface ModuleRepository extends JpaRepository<Module,Long> {
+public interface EventModuleRepository extends JpaRepository<EventModule,Long> {
 //    List<Event> findByOrganizerIdOrderByStartDateDesc(Long organizerId);
 //
 //    Optional<Event> findByIdAndOrganizerId(

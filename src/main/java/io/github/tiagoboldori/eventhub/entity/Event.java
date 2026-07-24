@@ -9,8 +9,6 @@ import java.time.LocalDateTime;
 @Table(name="events")
 public class Event {
 
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -101,7 +99,6 @@ public class Event {
     public void setOrganizer(User organizer) {
         this.organizer = organizer;
     }
-
 
 
 }
